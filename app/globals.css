@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background-color: #FAF6EF;
+    color: #1B1530;
+    line-height: 1.7;
+    font-size: 18px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', sans-serif;
+    color: #1B1530;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+  }
+
+  h2 {
+    font-size: clamp(1.875rem, 3vw, 3rem);
+    font-weight: 700;
+  }
+
+  section {
+    scroll-margin-top: 80px;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #6E4FF2;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    color: #FF6F61;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 1.75rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #6E4FF2, #6E4FF2);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #6E4FF2, #FF6F61);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(110, 79, 242, 0.3);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 1.75rem;
+    border-radius: 9999px;
+    background: transparent;
+    color: #6E4FF2;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: 'Source Sans 3', sans-serif;
+    border: 2px solid #6E4FF2;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background: #EDE8FE;
+    border-color: #6E4FF2;
+  }
+
+  .card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(27,21,48,0.06);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 12px 40px rgba(27,21,48,0.1);
+    transform: translateY(-2px);
+  }
+
+  .gradient-border {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 24px;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(135deg, #6E4FF2, #F5B947);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: gradient-rotate 8s linear infinite;
+  }
+
+  @keyframes gradient-rotate {
+    0% { background: linear-gradient(0deg, #6E4FF2, #F5B947); }
+    25% { background: linear-gradient(90deg, #6E4FF2, #F5B947); }
+    50% { background: linear-gradient(180deg, #6E4FF2, #F5B947); }
+    75% { background: linear-gradient(270deg, #6E4FF2, #F5B947); }
+    100% { background: linear-gradient(360deg, #6E4FF2, #F5B947); }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .gradient-border::before {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+  }
+}
